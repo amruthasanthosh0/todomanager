@@ -1,0 +1,21 @@
+ {% extends "base.html" %}
+ {% block body %}
+ <div class="todo-app">
+      <form method = "post" action="{{url_for('todo.edittodo',id=id,lid=lid)}}" class='todo-form'>
+      
+      <label for = "todolist" style="color:white; font-family: Arial, Helvetica, sans-serif;"  >Edit Your Todo current_date </label>
+      
+      <input name = "etodolist" type = "text" id = "todolist" required class='todo-input-edit' value={{todo[2]}} />
+      
+   
+      <label for = "Date" style="color:White; font-family: Arial, Helvetica, sans-serif;" value={{todo[3]}} />edit Date</label>
+  
+      <input name = "edate" type = "date" id = "Date" required class='todo-input-edit' />
+     
+    
+      <input type = "submit" value = "ADD" class='todo-button-edit'>
+      <br/>
+ </form>
+ </div>
+ 
+ {% endblock %}

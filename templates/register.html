@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block header %}
+    
+      <h2 class="display-4" ">Welcome to Todolist Manager!!!</h2>
+      
+{% endblock %}
+{% block body %}
+      <div class="todo-login">
+       <h3> Create your account </h3>	<br/>
+      <form method = "post" action = "/register">
+      <label class="form-label" for = "name" ">Enter your name</label>
+      <br/>
+      <input class="todo-input" name = "name" type = "text" id = "name" required/>
+      <br/>
+      <br/>
+      <label class="form-label" for = "username" ">Enter a username</label>
+      <br/>
+      <input class="todo-input" name = "username" type = "text" id = "username" required/>
+      <br/>
+      <br/>     
+      <label class="form-label" for = "password">Enter a password</label>
+      <br/>
+      <input class="todo-input" name = "password" type = "password" id = "password" required/>
+      <br/>
+      <br/>
+      <input class="todo-button" type = "submit" value = "Submit">
+      </form>
+      
+     </div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block header %}
+
+    
+      <h1 class="display-4" >Welcome to Todolist Manager!!! </h1> 
+{% endblock %}  
+
+{% block body %}
+      <div class="todo-login">	
+      <h3> Please Login to your account </h3>	<br/>
+      <form method = "post" action = "/login" >
+      
+      <label for = "username" class="form-label" >Enter your username</label>
+      <br/>
+      <input class="todo-input" name = "username" type = "text" id = "username" required/>
+      <br/>
+      <br/>
+      <label for = "password" class="form-label">Enter your password</label>
+      <br/>
+      <input class="todo-input" name = "password" type = "password" id = "password" required/>
+      <br/>
+      <br/>
+      <input class="todo-button" type = "submit" value = "Login">
+      </fieldset
+      </form>
+      
+      <p >Not an existing user?
+        <a href="{{url_for('todo.reg')}}"> Create a new profile!</a>  </p>
+      <div>            
+{% endblock %}

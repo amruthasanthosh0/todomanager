@@ -1,0 +1,103 @@
+
+{% extends "base.html" %}
+{% block header %}
+      <div>
+      <form action="{{url_for('todo.logout')}}" >
+          <button> Logout</button>
+          </form>
+      <h1 class="display-4" >Welcome {{user[1]}}</h1>
+{% endblock %}
+{% block body %}
+<div class="todo-app">
+      <form method = "post" action = "{{url_for('todo.addtodo', id=id)}}" class='todo-form'>
+      
+      <label for = "todolist" style="color:white; font-family: Arial, Helvetica, sans-serif;"  >Add your Todo</label>
+      
+      <input name = "todolist" type = "text" id = "todolist" required class='todo-input'/>
+      
+   
+      <label for = "Date" style="color:White; font-family: Arial, Helvetica, sans-serif;">Select Date</label>
+  
+      <input name = "date" type = "date" id = ""datefield" required min='31/7/2021' class='todo-input' />
+     
+    
+      <input type = "submit" value = "ADD" class='todo-button'>
+      <br/>
+      <br/>
+<h4> Remainder!! There are {{count[0]}} tasks to complete</h4>
+ </form>
+ </div>
+      <table class="table table-striped">
+ 
+   <tr class="todo-row-h">
+     <th scope="col"> Serial No</th>
+     <th scope="col"> Task</th>
+     <th scope="col"> Date_added</th>
+     <th scope="col"> Due_date </th>
+     <th scope="col"> Progress</th>
+     <th scope="col">Edit</th>
+     <th scope="col">Delete</th>
+     <th scope="col"> Task Done?</th>
+   </tr>
+
+        {% for lid, uid, task, lastdate, added_date, status in todo %}
+       
+   
+     <tr  class="todo-row">              
+     <td>{{lid}}</td>
+     <td>{{task}} </td>
+     <td>{{added_date}}</td>
+     <td>{{lastdate}}</td>
+     {% if status: %}
+            <td>Completed</td>
+      {% else : %}
+             <td>In progress</td>
+        {%endif %}
+     <td> 
+          <form action="{{url_for('todo.edit',id=id,lid=lid)}}" >
+          <button> <i class="fa fa-pencil-square-o" style="font-size:24px"></i></button>
+          </form>
+           
+         
+     </td>
+     <td>
+     <form action="{{url_for('todo.deletetodo',id=id,lid=lid)}}" >
+           <button type="submit"> <i class="fa fa-trash" style="font-size:24px"></i>  </button>
+           </form>
+     </td>
+     <td>
+         <form action="{{url_for('todo.completetodo',id=id,lid=lid)}}" >
+           <button type="submit"  ><i class="fa fa-check-square" style="font-size:24px;"></i></button>
+         </form>  
+         
+     </td>  
+   </tr>
+   
+        {%endfor%}
+       
+ </table> 
+ <p id="demo"></p>  
+</body> 
+ <script>
+document.getElementById("demo").innerHTML = "Date :" + Date();
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("datefield").setAttribute("min", today);
+ </script>
+
+     
+     
+      
+      
+     
+{% endblock %}
